@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from "styled-components";
 
 const shadowSize = '50px'
@@ -24,7 +24,7 @@ const appear = keyframes`
   }
 
   100% {
-    transform: scale(1.7);
+    transform: scale(1);
   }
 `;
 
@@ -37,7 +37,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #e6ceae;
-    transition: transform ease-in-out 1s;
+    
 `;
 
 const Horizontal = styled.div`
@@ -96,35 +96,61 @@ const LightWhitePiece = styled.div`
 `;
 
 const SymbolWhite = styled.div`
+    position: flex;
     position: absolute;
     z-index: 15;
     color: red;
-    transform: scale(1.7);
+    transform: scale(1.5);
     animation: ${appear} 300ms ease-out;
-    margin-bottom: 5px;
+    
+`;
+
+const ShortHorizontal = styled.div`
+    position: absolute;
+    height: 2px;
+    width: 15px;
+    background-color: red;
+    z-index: 20;
+    animation: ${appear} 300ms ease-out;
+`;
+
+const ShortVertical = styled.div`
+    position: absolute;
+    height: 15px;
+    width: 2px;
+    background-color: red;
+    z-index: 20;
+    animation: ${appear} 300ms ease-out;
 `;
 
 
 const Cell = ({ piece, whiteTurn, gameEnds, symbol }) => {
-    const [show, setShow] = useState(null)
-    return (
-        <Container
-            onMouseEnter={() => { if (!gameEnds && piece === null) whiteTurn ? setShow(2) : setShow(3) }}
-            onMouseLeave={() => { setShow(null) }}>
-            <Horizontal />
-            <Vertical />
+  const [show, setShow] = useState(null)
 
-            {piece === 0 ? <WhitePiece /> : null}
-            {piece === 1 ? <BlackPiece /> : null}
+  useEffect(() => {
+    if (piece !== null) setShow(null)
+  }, [piece])
+
+  return (
+    <Container
+      onMouseEnter={() => { if (!gameEnds && piece === null) whiteTurn ? setShow(2) : setShow(3) }}
+      onMouseLeave={() => { setShow(null) }}
+    >
+      <Horizontal />
+      <Vertical />
+
+      {piece === 0 ? <WhitePiece /> : null}
+      {piece === 1 ? <BlackPiece /> : null}
 
 
-            {symbol === 10 ? <SymbolWhite>+</SymbolWhite> : null}
+      {symbol === 10 ? <ShortHorizontal /> : null}
+      {symbol === 10 ? <ShortVertical /> : null}
 
-            {piece === null && show === 2 ? <LightWhitePiece /> : null}
-            {piece === null && show === 3 ? <LightBlackPiece /> : null}
+      {piece === null && show === 2 ? <LightWhitePiece /> : null}
+      {piece === null && show === 3 ? <LightBlackPiece /> : null}
 
-        </Container>
-    )
+    </Container>
+  )
 }
 
 export default Cell 

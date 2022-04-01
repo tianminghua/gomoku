@@ -5,7 +5,7 @@ import styled from "styled-components";
 const App = () => {
     return (
         <Container>
-            <h1 style={{ letterSpacing: '20px', margin: '20px' }}>GOMOKU</h1>
+            <h1 style={{ letterSpacing: '20px', margin: '20px', paddingLeft: '10px' }}>GOMOKU</h1>
             <SimpleRule>
                 <Text>Players taking black and white respectively.</Text>
                 <Text>Achieving five continuous pieces of your color to win.</Text>
