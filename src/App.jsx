@@ -20,7 +20,8 @@ export default App
 
 const Container = styled.div`
     display: flex;
-    
+    min-width: 700px;
+    min-height: 100vh;
     flex-direction: column;
     justify-content: space-around; 
     align-items: center;
@@ -44,4 +45,5 @@ const SimpleRule = styled.div`
 
 const Text = styled.div`
     margin: 0px;
+    font-size: medium;
 `;

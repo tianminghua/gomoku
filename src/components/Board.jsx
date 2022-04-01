@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Toast from 'react-bootstrap/Toast';
 
 const Board = () => {
-    const SIZE = 10;
+    const SIZE = 12;
     const [layout, setLayout] = useState(Array(SIZE * SIZE).fill(null));
     const [symbolLayout, setSymbolLayout] = useState(Array(SIZE * SIZE).fill(null));
     const [whiteTurn, setWhiteTurn] = useState(false);
@@ -15,7 +15,6 @@ const Board = () => {
     const [winMessage, setWinMessage] = useState('')
 
     const setSymbol = (tracking) => {
-        console.log(tracking)
         const newSymbolLayout = [...symbolLayout]
         tracking.forEach((num) => {
             newSymbolLayout[num] = 10;
@@ -194,7 +193,8 @@ const Title = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 
 `;
 
@@ -204,5 +204,5 @@ const Container = styled.div`
     display: grid;
     justify-content: center;
     align-content: center;
-    grid-template-columns: repeat(10, auto);
+    grid-template-columns: repeat(12, auto);
 `;

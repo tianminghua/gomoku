@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from "styled-components";
 
-const shadowSize = '50px'
-const cellSize = '60px'
+const shadowSize = '42px'
+const cellSize = '52px'
 
 const enlarge = keyframes`
   0% {
-    transform: scale(1);
+    transform: scale(0.9);
   }
 
-  50% {
-    transform: scale(0.95);
-  }
 
   100% {
     transform: scale(1.1);
@@ -63,7 +60,7 @@ const BlackPiece = styled.div`
     border-radius: 50%;
     z-index: 10;
     transform: scale(1.1);
-    animation: ${enlarge} 300ms ease-out;
+    animation: ${enlarge} 200ms ease-out;
 `;
 
 const LightBlackPiece = styled.div`
@@ -83,7 +80,7 @@ const WhitePiece = styled.div`
     border-radius: 50%;
     z-index: 10;
     transform: scale(1.1);
-    animation: ${enlarge} 300ms ease-out;
+    animation: ${enlarge} 200ms ease-out;
 `;
 
 const LightWhitePiece = styled.div`
